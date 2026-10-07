@@ -1,0 +1,11 @@
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+.dvc
+models/
+data/
+notes/
+!models/bert-mini/model.pt

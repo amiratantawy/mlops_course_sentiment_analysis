@@ -1,60 +1,29 @@
 [project]
 name = "mlops-practitioner-course"
 version = "0.1.0"
-description = "Add your description here"
+description = "Sentiment Analysis MLOps Course Project"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
-    "dvc[s3]>=3.50.0",
-    "mlflow>=2.15.0",
-    "boto3>=1.34.0",
-    "s3fs>=2024.6.0",
-    "emoji>=2.16.0",
-    "fastapi[standard]>=0.142.2",
-    "matplotlib>=3.11.2",
-    "numpy>=2.5.3",
-    "pandas>=3.0.6",
-    "pydantic>=2.13.5",
-    "pyyaml>=6.0.3",
-    "scikit-learn>=1.9.1",
-    "torch>=2.14.1",
-    "tqdm>=4.70.1",
-    "transformers>=5.18.0",
+    "torch",
+    "transformers",
+    "scikit-learn",
+    "pandas<3.0.0",
+    "numpy",
+    "mlflow",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "pydantic-settings",
+    "emoji",
+    "nltk",
+    "requests"
 ]
 
-[project.scripts]
-mlops-practitioner-course = "mlops_practitioner_course.main:main"
-
-[build-system]
-requires = ["uv_build>=0.10.7,<0.11"]
-build-backend = "uv_build"
-
 [[tool.uv.index]]
-name = "pytorch"
-url = "https://download.pytorch.org/whl/cu130"
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [tool.uv.sources]
-torch = { index = "pytorch" }
-
-[dependency-groups]
-dev = [
-    "httpx>=0.28.1",
-    "ipykernel>=7.4.0",
-    "pytest>=9.1.1",
-    "pytest-cov>=7.1.0",
-]
-
-[tool.pytest.ini_options]
-addopts = "--cov=mlops_practitioner_course --cov-report=term-missing"
-
-[tool.coverage.run]
-# CLI entry point: orchestration only, its parts are tested (or excluded) individually.
-omit = ["*/mlops_practitioner_course/main.py"]
-
-[tool.coverage.report]
-fail_under = 70
-exclude_also = [
-    # Excludes every line between "# no cover: start" and "# no cover: stop".
-    "# no cover: start(?s:.)*?# no cover: stop",
-]
+torch = { index = "pytorch-cpu" }
